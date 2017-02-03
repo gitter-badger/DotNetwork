@@ -23,9 +23,9 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+
 using System;
 using System.Collections.Generic;
-
 using DotNetty.Buffers;
 using DotNetty.Codecs;
 using DotNetty.Transport.Channels;
@@ -33,31 +33,42 @@ using DotNetty.Transport.Channels;
 namespace Quavo.Server.Network.Protocol.Codec.Connection
 {
 
-	/// <summary>
-	/// Decodes a client connection request.
-	/// </summary>
-	public class ConnectionDecoder : ByteToMessageDecoder
-	{
+    /// <summary>
+    /// Decodes a client connection request.
+    /// </summary>
+    public class ConnectionDecoder : ByteToMessageDecoder
+    {
 
-		/// <summary>
-		/// Decode the specified context, input and output.
-		/// </summary>
-		/// <param name="context">Context.</param>
-		/// <param name="input">Input.</param>
-		/// <param name="output">Output.</param>
-		protected override void Decode(IChannelHandlerContext context, IByteBuffer input, List<object> output)
-		{
-			if (!input.IsReadable())
-				return;
+        /// <summary>
+        /// Decode the specified context, input and output.
+        /// </summary>
+        /// <param name="context">Context.</param>
+        /// <param name="input">Input.</param>
+        /// <param name="output">Output.</param>
+        protected override void Decode(IChannelHandlerContext context, IByteBuffer input, List<object> output)
+        {
+            if (!input.IsReadable())
+                return;
 
-			//The connection opcode.
-			int id = input.ReadByte();
-			ConnectionOpcode type = ConnectionType.GetConnectionType(id);
+            //The connection opcode.
+            int id = input.ReadByte();
+            ConnectionOpcode type = ConnectionType.GetConnectionType(id);
 
-			if (type == ConnectionOpcode.NONE)
-				return;
+            if (type == ConnectionOpcode.NONE)
+                return;
 
-			output.Add(new ConnectionRequest(type));
-		}
-	}
+            switch (type)
+            {
+                case ConnectionOpcode.HANDSHAKE_CONNECTION:
+                    int size = input.ReadByte();
+                    int version = input.ReadInt();
+                    int minor = input.ReadInt();
+
+                    Console.WriteLine(version + ", " + minor);
+                    break;
+                case ConnectionOpcode.LOGIN_CONNECTION:
+                    break;
+            }
+        }
+    }
 }

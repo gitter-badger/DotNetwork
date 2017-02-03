@@ -1,10 +1,10 @@
 ﻿//
-// Constants.cs
+// HandshakeDecoder.cs
 //
 // Author:
 //       Jordan Abraham <jordan.abraham1997@gmail.com>
 //
-// Copyright (c) 2017 Quavo
+// Copyright (c) 2017 Quavo 2017
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -25,35 +25,33 @@
 // THE SOFTWARE.
 
 using System;
-using Quavo.Server.Network;
+using System.Collections.Generic;
+using DotNetty.Buffers;
+using DotNetty.Codecs;
+using DotNetty.Transport.Channels;
 
-namespace Quavo
+namespace Quavo.Server.Network.Protocol.Codec.Handshake
 {
 
-	/// <summary>
-	/// The main class to the server.
-	/// </summary>
-	class Quavo
-	{
+    /// <summary>
+    /// Decodes the handshake.
+    /// </summary>
+    public class HandshakeDecoder : ByteToMessageDecoder
+    {
 
-		/// <summary>
-		/// The version of the client the server supports.
-		/// </summary>
-		public const int VERSION = 725;
-
-		/// <summary>
-		/// The entry point of the program, where the program control starts and ends.
-		/// </summary>
-		/// <param name="args">The command-line arguments.</param>
-		public static void Main(string[] args)
-		{
-			Console.WriteLine("Welcome to Quavo C# [" + VERSION + "]!");
-
-			Console.WriteLine("Starting the network.");
-			NetworkBootstrap.Start();
-
-			Console.WriteLine("Quavo is online!");
-			Console.ReadLine();
-		}
-	}
+        /// <summary>
+        /// Decode the specified context, input and output.
+        /// </summary>
+        /// <param name="context">Context.</param>
+        /// <param name="input">Input.</param>
+        /// <param name="output">Output.</param>
+        protected override void Decode(IChannelHandlerContext context, IByteBuffer input, List<object> output)
+        {
+            Console.WriteLine("Hey");
+            int size = input.ReadByte();
+            int version = input.ReadInt();
+            int minor = input.ReadInt();
+            Console.WriteLine(version + ", " + minor);
+        }
+    }
 }

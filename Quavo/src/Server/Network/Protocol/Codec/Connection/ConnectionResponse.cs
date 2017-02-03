@@ -23,9 +23,8 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using System;
 
-using Quavo.Server.Network.Protocol.Codec.Connection;
+using Quavo.Server.Network.Listener.Impl;
 
 namespace Quavo.Server.Network.Protocol.Codec.Connection
 {
@@ -37,13 +36,22 @@ namespace Quavo.Server.Network.Protocol.Codec.Connection
 	{
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="T:Quavo.ConnectionResponse"/> class.
+		/// Initializes a new instance of the
+		/// <see cref="T:Quavo.Server.Network.Protocol.Codec.Connection.ConnectionResponse"/> class.
 		/// </summary>
+		/// <param name="handshakeListener">Handshake listener.</param>
 		/// <param name="type">Type.</param>
-		public ConnectionResponse(ConnectionOpcode type)
+		public ConnectionResponse(HandshakeListener handshakeListener, ConnectionOpcode type)
 		{
+			this.Listener = handshakeListener;
 			this.Type = type;
 		}
+
+		/// <summary>
+		/// Gets the listener.
+		/// </summary>
+		/// <value>The listener.</value>
+		public HandshakeListener Listener { get; }
 
 		/// <summary>
 		/// Gets the type of the connection.

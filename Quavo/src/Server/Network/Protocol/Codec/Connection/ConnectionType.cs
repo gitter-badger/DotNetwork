@@ -23,6 +23,7 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+
 using System;
 
 namespace Quavo.Server.Network.Protocol.Codec.Connection
@@ -60,7 +61,7 @@ namespace Quavo.Server.Network.Protocol.Codec.Connection
 	/// <summary>
 	/// An enumeration representing the different connection types.
 	/// </summary>
-	public enum ConnectionOpcode : int
+	public enum ConnectionOpcode
 	{
 
 		/// <summary>

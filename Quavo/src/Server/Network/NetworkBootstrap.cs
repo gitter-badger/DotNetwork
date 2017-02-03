@@ -23,14 +23,12 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using System;
+
 using System.Net;
 using System.Threading.Tasks;
-
 using DotNetty.Transport.Bootstrapping;
 using DotNetty.Transport.Channels;
 using DotNetty.Transport.Channels.Sockets;
-
 using Quavo.Server.Network.Protocol.Codec.Connection;
 
 namespace Quavo.Server.Network
@@ -47,11 +45,10 @@ namespace Quavo.Server.Network
 		/// </summary>
 		static async Task Bootstrap()
 		{
-			var boss = new MultithreadEventLoopGroup(1);
+			var boss = new MultithreadEventLoopGroup();
 			var worker = new MultithreadEventLoopGroup();
 			var bootstrap = new ServerBootstrap();
 			bootstrap.Group(boss, worker);
-			bootstrap.Option(ChannelOption.SoKeepalive, true);
 			bootstrap.Channel<TcpServerSocketChannel>();
 			bootstrap.ChildHandler(new ActionChannelInitializer<ISocketChannel>((ch) =>
 			{
@@ -74,6 +71,6 @@ namespace Quavo.Server.Network
 		{
 			Task.Run(Bootstrap).Wait();
 		}
-		
+
 	}
 }

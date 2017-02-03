@@ -23,11 +23,8 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using System;
 
 using DotNetty.Transport.Channels;
-
-using Quavo.Server.Network.Listener;
 using Quavo.Server.Network.Protocol.Codec.Connection;
 
 namespace Quavo.Server.Network.Listener.Impl
@@ -49,7 +46,14 @@ namespace Quavo.Server.Network.Listener.Impl
 			if (message is ConnectionRequest)
 			{
 				var request = (ConnectionRequest)message;
-				context.WriteAndFlushAsync(new ConnectionResponse(request.Type));
+				switch (request.Type)
+				{
+					case ConnectionOpcode.HANDSHAKE_CONNECTION:
+						context.WriteAndFlushAsync(new ConnectionResponse(new HandshakeListener(), request.Type));
+						break;
+					case ConnectionOpcode.LOGIN_CONNECTION:
+						break;
+				}
 			}
 		}
 	}

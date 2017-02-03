@@ -24,10 +24,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-
 using DotNetty.Codecs;
 using DotNetty.Buffers;
 using DotNetty.Transport.Channels;
+using Quavo.Server.Network.Protocol.Codec.Handshake;
 using System.Collections.Generic;
 
 namespace Quavo.Server.Network.Protocol.Codec.Connection
@@ -36,25 +36,11 @@ namespace Quavo.Server.Network.Protocol.Codec.Connection
 	/// <summary>
 	/// The connection encoder for the network.
 	/// </summary>
-	public class ConnectionEncoder : MessageToByteEncoder<ConnectionResponse>
+	public class ConnectionEncoder : MessageToMessageDecoder<ConnectionResponse>
 	{
-
-		/// <summary>
-		/// Encode the specified context, message and output.
-		/// </summary>
-		/// <param name="context">Context.</param>
-		/// <param name="message">Message.</param>
-		/// <param name="output">Output.</param>
-		protected override void Encode(IChannelHandlerContext context, ConnectionResponse message, IByteBuffer output)
+		protected override void Decode(IChannelHandlerContext context, ConnectionResponse message, List<object> output)
 		{
-			switch (message.Type)
-			{
-				case ConnectionOpcode.HANDSHAKE_CONNECTION:
-					//Start the handshake.
-					break;
-				case ConnectionOpcode.LOGIN_CONNECTION:
-					break;
-			}
+			
 		}
 	}
 }

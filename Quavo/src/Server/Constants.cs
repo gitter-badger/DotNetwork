@@ -23,7 +23,6 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using System;
 
 namespace Quavo.Server
 {
@@ -35,12 +34,12 @@ namespace Quavo.Server
 		/// <summary>
 		/// The host ip address the server binds to.
 		/// </summary>
-		public const String HOST_ADDRESS = "127.0.0.1";
+		public const string HOST_ADDRESS = "127.0.0.1";
 
 		/// <summary>
 		/// The host port the server binds to.
 		/// </summary>
 		public const int HOST_PORT = 43594;
-		
+
 	}
 }
