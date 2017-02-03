@@ -14,6 +14,12 @@ $RECYCLE.BIN/
 *.msm
 *.msp
 
+# Misc
+/packages
+/Quavo/bin
+/Quavo/packages
+/Quavo/obj
+
 # Windows shortcuts
 *.lnk
 
