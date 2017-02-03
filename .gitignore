@@ -19,6 +19,7 @@ $RECYCLE.BIN/
 /Quavo/bin
 /Quavo/packages
 /Quavo/obj
+/Quavo/Quavo.userprefs
 
 # Windows shortcuts
 *.lnk

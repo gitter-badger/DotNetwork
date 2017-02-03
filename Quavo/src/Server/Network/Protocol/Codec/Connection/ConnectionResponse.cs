@@ -27,7 +27,7 @@ using System;
 
 using Quavo.Server.Network.Protocol.Codec.Connection;
 
-namespace Quavo
+namespace Quavo.Server.Network.Protocol.Codec.Connection
 {
 
 	/// <summary>
