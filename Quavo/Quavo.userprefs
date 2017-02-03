@@ -4,22 +4,6 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workbench ActiveDocument="src\Server\Network\NetworkBootstrap.cs">
-    <Files>
-      <File FileName="src\Server\Network\Protocol\Codec\Connection\ConnectionEncoder.cs" Line="43" Column="7" NotebookId="1" />
-      <File FileName="src\Server\Network\Listener\Impl\ConnectionListener.cs" Line="51" Column="46" NotebookId="1" />
-      <File FileName="src\Server\Network\NetworkHandler.cs" Line="1" Column="1" NotebookId="1" />
-      <File FileName="src\Server\Network\NetworkBootstrap.cs" Line="60" Column="58" NotebookId="1" />
-    </Files>
-    <FloatingWindows>
-      <FloatingWindow WindowId="1" X="170" Y="100" Width="936" Height="662">
-        <Files>
-          <File FileName="src\Server\Network\Protocol\Codec\Connection\ConnectionRequest.cs" Line="50" Column="38" />
-          <File FileName="src\Server\Network\Protocol\Codec\Connection\ConnectionDecoder.cs" Line="33" Column="1" />
-          <File FileName="src\Server\Network\Protocol\Codec\Connection\ConnectionType.cs" Line="42" Column="51" />
-        </Files>
-      </FloatingWindow>
-    </FloatingWindows>
-  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.ItemProperties.Quavo PreferredExecutionTarget="MonoDevelop.Default" />
 </Properties>
