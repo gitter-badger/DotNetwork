@@ -48,7 +48,7 @@ namespace Quavo
 		/// <param name="args">The command-line arguments.</param>
 		public static void Main(string[] args)
 		{
-			Console.WriteLine("Welcome to Quavo C# [725]!");
+			Console.WriteLine("Welcome to Quavo C# [" + VERSION + "]!");
 
 			Console.WriteLine("Starting the network.");
 			NetworkBootstrap.Start();

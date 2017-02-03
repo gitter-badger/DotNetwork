@@ -19,7 +19,7 @@ $RECYCLE.BIN/
 /Quavo/bin
 /Quavo/packages
 /Quavo/obj
-/Quavo/Quavo.userprefs
+*.userprefs
 
 # Windows shortcuts
 *.lnk
@@ -52,3 +52,4 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+*.userprefs
